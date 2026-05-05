@@ -15,7 +15,7 @@ data and train & evaluate models, as well as the necessary data for training you
 
 Clone this repository or your fork thereof in the desired place:
 
-    git clone https://github.com/marcamsler1/mt-exercise-03
+    git clone https://github.com/LeonieZueblin/mt-exercise-03
 
 Create a new virtualenv that uses Python 3. Please make sure to run this command outside of any virtual Python environment:
 
@@ -29,14 +29,29 @@ Download Moses for post-processing:
 
     ./scripts/download_install_packages.sh
 
-
 Train a model:
 
     ./scripts/train.sh
 
 The training process can be interrupted at any time, and the best checkpoint will always be saved. It is also possible to continue training from there later on.
 
-# Steps for Windows users
+# Reproducing my steps 
+
+The repository contains two new configuration files: transformer_prenorm.yaml and transformer_postnorm.yaml. 
+
+To select either of these scripts to train the transformer, adapt the scripts/train.sh file and replace the default config with one of the above. 
+
+To generate the data visualisation based on the log files generated during my training runs, first: 
+
+    pip install matplotlib 
+
+if you do not have it installed already, and then: 
+
+    python3 scripts/analyze_validation.py
+
+The script output (latex table and line plot) can be found in the newly added folder called /analysis
+
+# Steps for Windows users (Untested by me) 
 
 This repo relies on Bash scripts (.sh files), which do not run natively on Windows (CMD or PowerShell).  
 Here are two ways to make it work:
@@ -48,7 +63,7 @@ Open Ubuntu from your Start menu.
 
 Inside the Ubuntu terminal, follow the exact same steps as shown above for macOS/Linux:
 ```
-git clone https://github.com/marcamsler1/mt-exercise-03
+git clone https://github.com/LeonieZueblin/mt-exercise-03
 cd mt-exercise-03
 ./scripts/make_virtualenv.sh
 ./scripts/download_install_packages.sh
